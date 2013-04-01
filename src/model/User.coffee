@@ -1,7 +1,7 @@
 validator = require 'validator'
 
 isValidObjectId = require 'src/validator/type/ObjectId'
-isValidEmail    = require 'src/validator/type/email'
+isValidEmail    = require 'src/validator/email'
 
 class User
 

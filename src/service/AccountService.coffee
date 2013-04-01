@@ -2,7 +2,7 @@ UserMapper      = require 'src/mapper/User'
 UserModel       = require 'src/model/User'
 UserRepository  = require 'src/repository/User'
 isValidObjectId = require 'src/validator/type/ObjectId'
-isValidEmail    = require 'src/validator/type/email'
+isValidEmail    = require 'src/validator/email'
 
 class AccountService
 
