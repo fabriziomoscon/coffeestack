@@ -2,7 +2,7 @@ DateMapper = require 'src/mapper/api/type/Date'
 
 User = require 'src/model/User'
 
-class UserMapper
+class User
 
   @marshall: (user) ->
 
@@ -17,6 +17,7 @@ class UserMapper
 
     return data
 
+
   @unmarshall: (data) ->
 
     throw new Error 'Invalid user data' unless data?
@@ -30,4 +31,5 @@ class UserMapper
     user.setEmail data.email if data.email?
     user.setPassword data.password if data.password?
 
-module.exports = UserMapper
+
+module.exports = User
