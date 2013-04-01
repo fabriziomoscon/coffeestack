@@ -32,7 +32,7 @@ module.exports = ->
   # ---- User ----
   @get  '/user/me',  sessionIdReplaceRedirect dispatch 'user', 'single'
   @get  '/user',     dispatch 'user', 'index'
-  @post '/user',     duspatch 'user', 'create'
+  @post '/user',     dispatch 'user', 'create'
   @get  '/user/:id', dispatch 'user', 'read'
   @put  '/user/:id', dispatch 'user', 'edit'
   @del  '/user/:id', dispatch 'user', 'remove'
