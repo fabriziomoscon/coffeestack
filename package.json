@@ -1,9 +1,9 @@
 {
-  "name": "<YOUR_PROJECT_NAME>",
+  "name": "coffeestack",
   "preferGlobal": true,
   "private": true,
   "version": "0.0.1",
-  "description": "description of your project",
+  "description": "add the description of your project",
   "contributors": [],
   "scripts": {
     "prestart": "./node_modules/.bin/jake minify",
@@ -55,5 +55,5 @@
   "domains": [
     "yourproject.com"
   ],
-  "subdomain": "your project"
+  "subdomain": "subdomain.yourproject.com"
 }

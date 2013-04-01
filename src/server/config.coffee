@@ -4,12 +4,12 @@ module.exports =
     db:
       protocol: "mongodb"
       host:     "127.0.0.1"
-      dbName:   "<YOUR_DB_NAME>"
+      dbName:   "coffeestackDB"
       port:     27017
       user:     null
       password: null
     server:
-      domain: "<THE_SERVER_DOMAIN>"
+      domain: "yourproject.com"
       auth:
         salt: "<SOME_SALT>"
       listenPort: 3000
@@ -33,12 +33,12 @@ module.exports =
     db:
       protocol: "mongodb"
       host:     "127.0.0.1"
-      dbName:   "<YOUR_DB_NAME>"
+      dbName:   "coffeestackDB"
       port:     27017
       user:     null
       password: null
     server:
-      domain: "<THE_SERVER_DOMAIN>"
+      domain: "yourproject.com"
       auth:
         salt: "<SOME_SALT>"
       listenPort: 3000
@@ -62,12 +62,12 @@ module.exports =
     db:
       protocol: "mongodb"
       host:     "127.0.0.1"
-      dbName:   "<YOUR_DB_NAME>"
+      dbName:   "coffeestackDB"
       port:     27017
       user:     null
       password: null
     server:
-      domain: "<THE_SERVER_DOMAIN>"
+      domain: "yourproject.com"
       auth:
         salt: "<SOME_SALT>"
       listenPort: 3000
@@ -91,12 +91,12 @@ module.exports =
     db:
       protocol: "mongodb"
       host:     "127.0.0.1"
-      dbName:   "<YOUR_DB_NAME>"
+      dbName:   "coffeestackDB"
       port:     27017
       user:     null
       password: null
     server:
-      domain: "<THE_SERVER_DOMAIN>"
+      domain: "yourproject.com"
       auth:
         salt: "<SOME_SALT>"
       listenPort: 3000
