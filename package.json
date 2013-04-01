@@ -32,7 +32,8 @@
     "q": "0.8.x",
     "mmm-vanillahogan": "0.2.x",
     "async": "0.2.x",
-    "supervisor": "*"
+    "supervisor": "*",
+    "validator": "*"
   },
   "devDependencies": {
     "jake": "0.5.x",

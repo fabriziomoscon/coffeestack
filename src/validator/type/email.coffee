@@ -1,0 +1,1 @@
+module.exports = (email) -> return require('validator').isEmail email

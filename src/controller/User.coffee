@@ -1,17 +1,8 @@
 http = require 'src/controller/helper/httpResponse'
 
+isValidObjectId = require 'src/validator/type/ObjectId'
+
 class Controller
-
-# ----------
-
-  @single: (req, res, next) ->
-
-    if not /^[0-9A-F]{24}$/i.test req.params.id
-      return res.onion.use( http.badRequest(new Error 'Invalid user id') ).peel()
-
-    res.status 200
-    res.data.body.user = {}
-    return res.onion.peel()
 
 # ----------
 
@@ -20,5 +11,47 @@ class Controller
     res.status 200
     res.data.body.users = {}
     return res.onion.peel()
+
+# ----------
+
+  @single: (req, res, next) ->
+
+    unless isValidObjectId req.params.id
+      return res.onion.use( http.badRequest(new Error 'Invalid user id') ).peel()
+
+    res.status 200
+    res.data.body.user = {}
+    return res.onion.peel()
+
+# ----------
+
+  @create: (req, res, next) ->
+
+    res.status 200
+    res.data.body.user = {}
+    return res.onion.peel()
+
+# ----------
+
+  @edit: (req, res, next) ->
+
+    unless isValidObjectId req.params.id
+      return res.onion.use( http.badRequest(new Error 'Invalid user id') ).peel()
+
+    res.status 200
+    res.data.body.users = {}
+    return res.onion.peel()
+
+# ----------
+
+  @remove: (req, res, next) ->
+
+    unless isValidObjectId req.params.id
+      return res.onion.use( http.badRequest(new Error 'Invalid user id') ).peel()
+
+    res.status 200
+    res.data.body.users = {}
+    return res.onion.peel()
+
 
 module.exports = Controller

@@ -1,16 +1,6 @@
-express    = require 'express'
-path       = require 'path'
-
-check = require 'check-types'
-
-# -- Controllers ---
-
 controllers =
   index:    require 'src/controller/Index'
   user:     require 'src/controller/User'
-
-
-# -- Helpers ---
 
 # A helpful function to load twostep views and dispatch controllers
 dispatch = (controllerName, actionName) ->
@@ -36,15 +26,16 @@ sessionIdReplaceRedirect = (action) ->
 # Routes
 module.exports = ->
 
-  basedir = @get 'baseDir'
-
   # ---- Home ----
   @get '/',                 dispatch 'index'
 
   # ---- User ----
-  @get  '/user/me',               sessionIdReplaceRedirect dispatch 'user', 'single'
-  @get  '/user/:id',              dispatch 'user', 'single'
-  @get  '/user',                  dispatch 'user', 'index'
+  @get  '/user/me',  sessionIdReplaceRedirect dispatch 'user', 'single'
+  @get  '/user',     dispatch 'user', 'index'
+  @post '/user',     duspatch 'user', 'create'
+  @get  '/user/:id', dispatch 'user', 'read'
+  @put  '/user/:id', dispatch 'user', 'edit'
+  @del  '/user/:id', dispatch 'user', 'remove'
 
   # -- Testing Only ---
   if process.env.NODE_ENV in ['testing', 'staging']

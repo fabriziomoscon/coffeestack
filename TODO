@@ -6,17 +6,9 @@ ciao
 
 architecture
 
-- add restful route with controller example
-- add a mapper example
+- add RESTful route with controller user as an example
 - add two step view example
-- add a service example
-- add a repository example
-- add a source example
 
-
-authentication
-
-- add example of passport for social authentication
 
 frontend
 
@@ -31,12 +23,11 @@ db
 test
 
 - add travis test badge
-- add mock data
-- add some fixtures
+- add mocks
 - add a unit example
 - add an integration example
 
-separate
+package
 
 - put lib/mongo/gateway into its own npm package
 - put lib/mongo/logger into its own npm package
