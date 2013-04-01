@@ -30,6 +30,7 @@ db
 
 test
 
+- add travis test badge
 - add mock data
 - add some fixtures
 - add a unit example
