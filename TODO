@@ -6,9 +6,12 @@ ciao
 
 architecture
 
-- add RESTful route with controller user as an example
+- complete user controller with logic
 - add two step view example
 
+mapper
+
+- add password hashing to user api mapper
 
 frontend
 

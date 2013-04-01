@@ -4,7 +4,7 @@ UserRepository  = require 'src/repository/User'
 isValidObjectId = require 'src/validator/type/ObjectId'
 isValidEmail    = require 'src/validator/email'
 
-class AccountService
+class Account
 
   constructor: (UserRepo = UserRepository) ->
     throw new Error 'Invalid repository' unless UserRepo instanceof Function
@@ -63,4 +63,4 @@ class AccountService
     @userRepository.remove userId, callback
 
 
-module.exports = AccountService
+module.exports = Account

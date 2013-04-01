@@ -2,6 +2,10 @@ http = require 'src/controller/helper/httpResponse'
 
 isValidObjectId = require 'src/validator/type/ObjectId'
 
+AccountService = require 'src/service/Account'
+
+UserMapper = require 'src/mapper/User'
+
 class Controller
 
 # ----------
@@ -27,9 +31,21 @@ class Controller
 
   @create: (req, res, next) ->
 
-    res.status 200
-    res.data.body.user = {}
-    return res.onion.peel()
+    return res.onion.use( http.badRequest(new Error 'Invalid user data') ).peel() unless req.body?
+
+    if req.method is 'POST'
+
+      try user = UserMapper.unmarshall req.body
+      catch err then return res.onion.use( http.badRequest(err)).peel()
+
+      (new AccountService).create user, (err, user) ->
+        return res.onion.use( http.serverError(error) ).peel() if error?
+
+        res.status 200
+        res.data.body.user = user
+        return res.onion.peel()
+
+    else return res.onion.peel()
 
 # ----------
 

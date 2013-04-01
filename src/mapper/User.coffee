@@ -1,4 +1,4 @@
-ObjectIdMapper = require 'src/mapper/type/ObjectIdMapper'
+ObjectIdMapper = require 'src/mapper/type/ObjectId'
 
 User = require 'src/model/User'
 

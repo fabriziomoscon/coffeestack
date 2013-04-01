@@ -41,7 +41,7 @@ module.exports =
       domain: "yourproject.com"
       auth:
         salt: "<SOME_SALT>"
-      listenPort: 3000
+      listenPort: 4000
       session:
         secret: "<SESSION_SECRET>"
       oauth:
