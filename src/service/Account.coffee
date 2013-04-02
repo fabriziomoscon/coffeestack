@@ -13,23 +13,28 @@ class Account
 
   createUser: (user, callback) ->
     throw new Error 'Invalid callback' unless callback instanceof Function
-    return callback new Error 'Invalid User' unless user instanceof UserModel
+    return callback new Error('Invalid User'), null unless user instanceof UserModel
     
-    @findUserByEmail user.email, (err, user) =>
+    @findUserByEmail user.email, (err, userFound) =>
       return callback err, null if err?
-      return callback new Error('email already used'), null if user?
-      @userRepository.add user, callback
+      return callback new Error('email already used'), null if userFound?
+      @userRepository.add user, (err, users) ->
+        return callback err, null if err?
+
+        return callback new Error('No user created/returned'), null unless users?[0]?
+
+        return callback null, users[0]
 
 
   findUserByEmail: (email, callback) ->
     throw new Error 'Invalid callback' unless callback instanceof Function
-    return callback new Error('Invalid email') unless isValidEmail email
+    return callback new Error('Invalid email'), null unless isValidEmail email
     @userRepository.findOneByEmail email, callback
 
 
   findUserById: (userId, callback) ->
     throw new Error 'Invalid callback' unless callback instanceof Function
-    throw new Error 'Invalid userId' unless isValidObjectId userId
+    return callback new Error('Invalid userId'), null unless isValidObjectId userId
     @userRepository.findOneById userId, callback
 
 

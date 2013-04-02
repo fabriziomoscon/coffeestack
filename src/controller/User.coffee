@@ -4,7 +4,7 @@ isValidObjectId = require 'src/validator/type/ObjectId'
 
 AccountService = require 'src/service/Account'
 
-UserMapper = require 'src/mapper/User'
+UserMapper = require 'src/mapper/api/User'
 
 check = require 'check-types'
 
@@ -47,10 +47,10 @@ class Controller
       try user = UserMapper.unmarshall req.body
       catch err then return res.onion.use( http.badRequest(err) ).peel()
 
-      (new AccountService).create user, (err, user) ->
+      (new AccountService).createUser user, (err, user) ->
         return res.onion.use( http.serverError(err) ).peel() if err?
 
-        res.status 200
+        res.status 201
         res.data.body.user = user
         return res.onion.peel()
 

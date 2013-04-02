@@ -40,7 +40,7 @@ module.exports = ->
   # -- Testing Only ---
   if process.env.NODE_ENV in ['testing', 'staging']
 
-    TestController = require 'server/controllers/Test'
+    TestController = require 'src/controller/Test'
     @post '/testing/drop', TestController.dropDatabase
     @post '/testing/fixtures', TestController.loadFixtures
     @post '/testing/fixtures/users', TestController.loadFixturesUsers

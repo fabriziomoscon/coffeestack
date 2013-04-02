@@ -1,4 +1,4 @@
-MongoGateway     = require 'src/lib/mongo/Gateway'
+MongoGateway = require 'src/lib/mongo/Gateway'
 
 ObjectIdMapper = require 'src/mapper/type/ObjectId'
 

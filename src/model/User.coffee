@@ -13,7 +13,6 @@ class User
 
     @setFirstName props.first_name
     @setLastName props.last_name
-    @setEmail props.email if props.email?
 
 
   setEmail: (email) =>

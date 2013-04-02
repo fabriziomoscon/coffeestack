@@ -1,12 +1,12 @@
 DateMapper = require 'src/mapper/api/type/Date'
 
-User = require 'src/model/User'
+UserModel = require 'src/model/User'
 
 class User
 
   @marshall: (user) ->
 
-    throw new Error 'Invalid user' unless user instanceof User
+    throw new Error 'Invalid user' unless user instanceof UserModel
 
     data = {}
     data.id = user.id if user.id?
@@ -22,17 +22,19 @@ class User
 
     throw new Error 'Invalid user data' unless data?
 
-    if typeof user isnt 'undefined' and user not instanceof User
+    if typeof user isnt 'undefined' and user not instanceof UserModel
       throw new Error 'Invalid user'
 
     initData = {}
     initData.first_name = data.first_name if data.first_name?
     initData.last_name = data.last_name if data.last_name?
 
-    user = user || new User initData
+    user = user || new UserModel initData
 
     user.setEmail data.email if data.email?
     user.setPassword data.password if data.password?
+
+    return user
 
 
 module.exports = User

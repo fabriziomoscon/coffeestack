@@ -1,6 +1,6 @@
 ObjectIdMapper = require 'src/mapper/type/ObjectId'
 
-User = require 'src/model/User'
+UserModel = require 'src/model/User'
 
 check = require 'check-types'
 
@@ -8,8 +8,9 @@ class User
 
   @marshall: (user) ->
 
-    throw new Error 'Invalid user' unless user instanceof User
+    throw new Error 'Invalid user' unless user instanceof UserModel
 
+    data = {}
     data._id = ObjectIdMapper.marshall user.id if user.id?
     data.first_name = user.first_name if user.first_name?
     data.last_name = user.last_name if user.last_name?
@@ -26,9 +27,9 @@ class User
     return null if data is null
 
     throw new Error 'Invalid Data' unless check.isObject data
-    throw new Error 'Invalid user' if user? and user not instanceof User
+    throw new Error 'Invalid user' if user? and user not instanceof UserModel
 
-    model = user || new User first_name: data.first_name, last_name: data.last_name
+    model = user || new UserModel first_name: data.first_name, last_name: data.last_name
     
     model.id = ObjectIdMapper.unmarshall data._id if data._id?
     model.setEmail data.email if data.email?

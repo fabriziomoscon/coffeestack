@@ -13,15 +13,15 @@ class UserRespository
 
   add: (users, callback) ->
     users = [users] unless Array.isArray users
-    @userSource.insert (@userMapper.marshall(user) for user in users), mapUserCallback(callback)
+    @userSource.insert (@userMapper.marshall(user) for user in users), @mapUserCallback(callback)
 
 
   findOneById: (userId, callback) ->
-    @userSource.findOneById userId, mapUserCallback(callback)
+    @userSource.findOneById userId, @mapUserCallback(callback)
 
 
   findOneByEmail: (email, callback) ->
-    @userSource.findOneByEmail email, mapUserCallback(callback)
+    @userSource.findOneByEmail email, @mapUserCallback(callback)
 
 
   findAll: (callback) ->
@@ -39,17 +39,19 @@ class UserRespository
 
 
   update: (userId, user, callback) ->
-    @userSource.update userId, @userMapper.marshall(user), mapUserCallback(callback)
+    @userSource.update userId, @userMapper.marshall(user), @mapUserCallback(callback)
 
 
   remove: (userId, callback) ->
-    @userSource.remove userId, mapUserCallback(callback)
+    @userSource.remove userId, @mapUserCallback(callback)
 
 
   mapUserCallback: (callback) ->
     return (err, usersData) =>
       return callback err, null if err?
-      return callback null, null unless userData?
+      return callback null, null unless usersData?
+      usersData = [usersData] unless Array.isArray usersData
+
       return callback null, (@userMapper.unmarshall(userData) for userData in usersData)
 
 
