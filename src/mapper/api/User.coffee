@@ -18,15 +18,18 @@ class User
     return data
 
 
-  @unmarshall: (data) ->
+  @unmarshall: (data, user) ->
 
     throw new Error 'Invalid user data' unless data?
+
+    if typeof user isnt 'undefined' and user not instanceof User
+      throw new Error 'Invalid user'
 
     initData = {}
     initData.first_name = data.first_name if data.first_name?
     initData.last_name = data.last_name if data.last_name?
 
-    user = new User initData
+    user = user || new User initData
 
     user.setEmail data.email if data.email?
     user.setPassword data.password if data.password?

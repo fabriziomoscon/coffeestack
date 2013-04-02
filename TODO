@@ -6,6 +6,7 @@ ciao
 
 architecture
 
+- user session management
 - complete user controller with logic
 - add two step view example
 

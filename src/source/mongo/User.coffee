@@ -28,7 +28,12 @@ class UserSource
 
 
   @remove: (id, callback) ->
-    MongoGateway.remove collectionName, {"_id":ObjectIdMapper.marshall(id)}, callback
+    MongoGateway.findAndModify collectionName,
+      {"_id": ObjectIdMapper.marshall(id)},
+      [],
+      {},
+      {"new": false},
+      callback
 
 
   @update: (id, userData, callback) ->
