@@ -1,3 +1,17 @@
+CoffeeStack
+===========
+
+Predefined node.js express web stack written in CoffeeScript providing common CRUD actions for account management as example user case. This layered architecture is an extended MVC which uses data mapper, repository pattern and two step view to achieve a neat separation of concerns between the layers. The application code integrates a basic template for unit, functional and integration tesing and HTML rendering template using stylus and mustache. It also provide JSON data formatted endpoints which can be called using standard HTTP protocol headers for accept as shown in JSON web service functional test example. 
+
+Ready to go
+-----------
+
+Download the code to create an initial web application setup and extend it as you wish.
+
+```
+git clone git@github.com:fabriziomoscon/coffeestack.git
+```
+
 Setup
 -----
 
