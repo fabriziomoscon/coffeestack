@@ -6,7 +6,7 @@
   "description": "add the description of your project",
   "contributors": [],
   "scripts": {
-    "prestart": "./node_modules/.bin/jake minify",
+    "prestart": "./node_modules/.bin/jake siteminify",
     "start": "coffee app.coffee",
     "supervisor": "supervisor app.coffee",
     "testing": "export NODE_ENV=testing && supervisor -i ciao app.coffee",

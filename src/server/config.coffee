@@ -1,4 +1,4 @@
-module.exports =
+config =
 
   development:
     db:
@@ -115,3 +115,7 @@ module.exports =
       google:
         maps:
           key: ''
+
+module.exports = (environment) ->
+  throw new Error 'Environment not found' unless environment? and config[environment]?
+  return config[environment]

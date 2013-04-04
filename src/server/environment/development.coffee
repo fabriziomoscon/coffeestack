@@ -1,10 +1,6 @@
-Registry  = require 'src/model/Registry'
-
 module.exports = ->
 
   console.log 'Loading config: DEVELOPMENT'
-
-  Registry.config = require('src/server/config').development
 
   # HTML not ugly
   @locals.pretty = true

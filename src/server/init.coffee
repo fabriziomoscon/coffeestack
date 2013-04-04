@@ -3,7 +3,8 @@ MongoStore       = require('connect-mongo') express
 mmm              = require 'mmm-vanillahogan'
 stylus           = require 'stylus'
 MongoGateway     = require 'src/lib/mongo/Gateway'
-Registry         = require 'src/model/Registry'
+
+getConfig = require 'src/server/config'
 
 module.exports = ->
 
@@ -11,14 +12,8 @@ module.exports = ->
 
   baseDir = @get 'baseDir'
 
-  # configure environment specific settings
-  @configure 'development', require 'src/server/environment/development'
-  @configure 'staging',     require 'src/server/environment/staging'
-  @configure 'testing',     require 'src/server/environment/testing'
-  @configure 'production',  require 'src/server/environment/production'
-
-  # application settings
-  config = Registry.config
+  config = getConfig process.env.NODE_ENV
+  @configure process.env.NODE_ENV, require "src/server/environment/#{process.env.NODE_ENV}"
 
   # Configure template engine
   @set 'view engine', 'html'

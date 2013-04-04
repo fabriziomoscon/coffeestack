@@ -1,3 +1,7 @@
+bootstrapping
+
+- create script that checks for NODE_PATH and stop execution when not found
+
 ciao
 
 - add ciao API example

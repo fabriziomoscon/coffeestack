@@ -1,3 +1,5 @@
+process.env.NODE_ENV ?= 'development'
+
 express  = require 'express'
 path     = require 'path'
 
@@ -9,7 +11,7 @@ app.configure require 'src/server/init'
 app.configure require 'src/server/routes'
 
 # Far better error stack debugging. Do not use in production!
-if not process.env.NODE_ENV or process.env.NODE_ENV is 'development'
+if process.env.NODE_ENV is 'development'
 
   # Breakdown
   breakdown = require 'breakdown'
