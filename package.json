@@ -8,10 +8,10 @@
   "scripts": {
     "prestart": "./node_modules/.bin/jake siteminify",
     "start": "coffee app.coffee",
-    "supervisor": "supervisor app.coffee",
+    "supervisor": "export NODE_PATH=./:$NODE_PATH && supervisor app.coffee",
     "testing": "export NODE_ENV=testing && supervisor -i ciao app.coffee",
     "front-test": "./node_modules/.bin/jake jstest",
-    "back-test": "export NODE_PATH=`pwd` && export TZ='Europe/London' && mocha test/unit",
+    "back-test": "export NODE_PATH=./:$NODE_PATH && export TZ='Europe/London' && mocha test/unit",
     "test": "npm run back-test && coffee test/lint.coffee && npm run front-test"
   },
   "dependencies": {

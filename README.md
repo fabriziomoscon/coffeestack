@@ -36,7 +36,7 @@ Start Server
 ------------
 
 ```bash
-npm start
+npm run supervisor
 ```
 
 Browse localhost

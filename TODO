@@ -1,3 +1,7 @@
+dependencies
+
+- remove unused dependencies 
+
 bootstrapping
 
 - create startup script that checks for NODE_PATH and stop execution when not found
@@ -6,6 +10,7 @@ ciao
 
 - add ciao API example
 - add ciao HTML example
+
 - add ciao doc example
 
 architecture
