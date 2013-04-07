@@ -112,7 +112,7 @@ and executing it
 smog &
 ```
 
-once smog is running open a browser to [http://localhost:8080/](http://localhost:8080/) and change `test` to `bizzby` inside the DSN popup
+once smog is running open a browser to [http://localhost:8080/](http://localhost:8080/) and change `test` to `coffeestackDB` inside the DSN popup
 
 NOTE
 

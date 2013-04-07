@@ -27,7 +27,7 @@ sessionIdReplaceRedirect = (action) ->
 module.exports = ->
 
   # ---- Home ----
-  @get '/',                 dispatch 'index'
+  @get '/',                 dispatch 'index', 'index'
 
   # ---- User ----
   @get  '/user/me',  sessionIdReplaceRedirect dispatch 'user', 'single'

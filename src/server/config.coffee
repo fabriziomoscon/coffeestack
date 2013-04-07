@@ -25,6 +25,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -54,6 +56,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -83,6 +87,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -112,6 +118,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
