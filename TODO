@@ -1,3 +1,6 @@
+bug
+- fix email already in use when running testing fixtures
+
 dependencies
 
 - remove unused dependencies 

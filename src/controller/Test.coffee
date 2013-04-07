@@ -62,7 +62,7 @@ alwaysResponsInJSON = (req, res) ->
 
 loadUsers = (req, res, callback) ->
   as = new AccountService
-  for key, userData of require('test/data/users').getData()
+  for key, userData of require('test/data/db/users').getData()
     as.createUser UserMapper.unmarshall(userData), (err, result) ->
       console.log err if err?
       return callback err, null if err?
