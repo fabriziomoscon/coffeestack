@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Coffeestack by fabriziomoscon</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/fabriziomoscon/coffeestack">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/fabriziomoscon/coffeestack/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/fabriziomoscon/coffeestack/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Coffeestack</h1>
+          <p>CoffeeScript nodestack website and APIs made easy</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/fabriziomoscon">fabriziomoscon</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>CoffeeStack</h1>
+
+<p>Predefined node.js express web stack written in CoffeeScript providing common CRUD actions for account management as an example user case. This layered architecture is an extended MVC which uses data mapper, repository pattern and two step view to achieve a neat separation of concerns between the layers. The application code integrates a basic template for unit, functional, integration tests and HTML rendering template using stylus and mustache. It also provide JSON endpoints which can be called using standard HTTP headers for <code>Accept</code> as shown in JSON web service functional test <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/test/functional/json/user/create/success.coffee">example</a>. </p>
+
+<h2>Ready to go</h2>
+
+<p>Download the code to create an initial web application setup and extend it as you wish.</p>
+
+<pre><code>git clone git@github.com:fabriziomoscon/coffeestack.git
+</code></pre>
+
+<h2>Setup</h2>
+
+<p>In <code>~/.bash_profile</code> or equivalent:</p>
+
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>./node_modules/.bin:<span class="nv">$PATH</span>
+<span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span>./:<span class="nv">$NODE_PATH</span>
+</pre></div>
+
+<p>From the command line:</p>
+
+<div class="highlight"><pre>npm install
+</pre></div>
+
+<div class="highlight"><pre><span class="o">[</span>sudo<span class="o">]</span> npm install -g supervisor
+</pre></div>
+
+<h2>Start Server</h2>
+
+<div class="highlight"><pre>npm start
+</pre></div>
+
+<h2>Browse localhost</h2>
+
+<p><a href="http://localhost:3000/">http://localhost:3000/</a></p>
+
+<h2>Run Tests</h2>
+
+<div class="highlight"><pre>npm <span class="nb">test</span>
+</pre></div>
+
+<h2>Functional test using ciao</h2>
+
+<p>install ciao globally</p>
+
+<div class="highlight"><pre>sudo npm install ciao -g
+</pre></div>
+
+<p>run the test</p>
+
+<p>console1</p>
+
+<div class="highlight"><pre>npm run testing
+</pre></div>
+
+<p>console2 (JSON)</p>
+
+<div class="highlight"><pre>ciao <span class="nb">test</span>/functional/json -c <span class="nb">test</span>/functional/ciao.json
+</pre></div>
+
+<p>console3 (HTML)</p>
+
+<div class="highlight"><pre>ciao <span class="nb">test</span>/functional/html -c <span class="nb">test</span>/functional/ciao.json
+</pre></div>
+
+<h2>ubuntu</h2>
+
+<p>In order to run nodejs on lower port without root permission the following has been installed and executed</p>
+
+<div class="highlight"><pre>sudo apt-get install libcap2-bin
+sudo setcap <span class="nv">cap_net_bind_service</span><span class="o">=</span>+ep /usr/bin/nodejs
+sudo setcap <span class="nv">cap_net_bind_service</span><span class="o">=</span>+ep  /usr/local/lib/node_modules/coffee-script/bin/coffee
+</pre></div>
+
+<p>In order to switch between different versions of node we installed nave which can be used easly with the following</p>
+
+<div class="highlight"><pre>sudo nave usemain 0.10
+</pre></div>
+
+<p>Start the server as a daemon:</p>
+
+<div class="highlight"><pre>nohup npm run supervisor &gt;&gt; /var/www/app.log 2&gt;&amp;1 &amp;
+</pre></div>
+
+<h2>Database</h2>
+
+<p>You can access collections and documents inside the database installing smog on your local machine</p>
+
+<div class="highlight"><pre><span class="o">[</span>sudo<span class="o">]</span> npm install smog -g
+</pre></div>
+
+<p>and executing it</p>
+
+<div class="highlight"><pre>smog &amp;
+</pre></div>
+
+<p>once smog is running open a browser to <a href="http://localhost:8080/">http://localhost:8080/</a> and change <code>test</code> to <code>bizzby</code> inside the DSN popup</p>
+
+<p>NOTE</p>
+
+<p>NODE_PATH='./:$NODE_PATH' and NODE_ENV='staging' must be in ~/.bashrc or exported in the current env</p>
+
+<h1>Front-end</h1>
+
+<h2>Build environment</h2>
+
+<p>The front-end code is using <a href="https://github.com/mde/jake">Jake</a> as a build tool.
+Jake is installed by npm as one of the dev dependencies.
+Jake can execute tasks from <code>Jakefile.coffee</code>.
+Run <code>jake -T</code> to see a list of the available tasks.
+Run <code>jake &lt;task name&gt;</code> to execute a task.
+When a task depends on some other tasks,
+those other tasks will be executed first.</p>
+
+<h2>Style</h2>
+
+<p>CSS is compiled from Stylus code.
+The Stylus middleware automatically recompiles
+when changes are made.</p>
+
+<h2>Updating CoffeeScript</h2>
+
+<p>There is a <code>watch</code> Jake task
+that can be used to automatically
+compile and bundle front-end CoffeeScript
+when it is changed.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-39941983-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
