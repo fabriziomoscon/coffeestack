@@ -18,7 +18,7 @@ Setup
 In `~/.bash_profile` or equivalent:
 
 ```bash
-export PATH=./node_modules/.bin:$PATH
+export PATH=$PATH:./node_modules/.bin
 export NODE_PATH=./:$NODE_PATH
 ```
 
