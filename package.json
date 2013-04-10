@@ -7,7 +7,7 @@
   "contributors": [],
   "scripts": {
     "prestart": "./node_modules/.bin/jake siteminify",
-    "start": "coffee app.coffee",
+    "start": "export NODE_PATH=./:$NODE_PATH && coffee app.coffee",
     "supervisor": "export NODE_PATH=./:$NODE_PATH && supervisor app.coffee",
     "testing": "export NODE_ENV=testing && export NODE_PATH=./:$NODE_PATH && supervisor -i ciao app.coffee",
     "front-test": "./node_modules/.bin/jake jstest",
