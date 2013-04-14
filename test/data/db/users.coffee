@@ -14,17 +14,17 @@ data =
 
   validUser1:
     _id: new ObjectID( ids.validIdString1 )
-    first_name: 'alister'
-    last_name: 'smith'
-    email: 'alister@coffeestack.com'
+    first_name: 'fabrizio'
+    last_name: 'moscon'
+    email: 'fab@coffeestack.com'
     password: 'qwerty'
     created_at: new Date 2012, 1, 1
 
   validUser2:
     _id: new ObjectID( ids.validIdString2 )
-    first_name: 'bob'
-    last_name: 'peterson'    
-    email: 'bob@coffestack.com'
+    first_name: 'peter'
+    last_name: 'johnson'
+    email: 'peter@coffestack.com'
     password: 'qwerty'
     created_at: new Date 2012, 11, 7
 
