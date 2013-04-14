@@ -60,6 +60,13 @@ install ciao globally
 sudo npm install ciao -g
 ```
 
+load fixtures
+```bash
+curl -XPOST http://localhost:4000/testing/drop
+curl -XPOST http://localhost:4000/testing/fixtures
+curl -XPOST http://localhost:4000/testing/fixtures/users
+```
+
 run the test
 
 console1
