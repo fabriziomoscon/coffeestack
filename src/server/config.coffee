@@ -124,6 +124,7 @@ config =
         maps:
           key: ''
 
-module.exports = (environment) ->
+
+module.exports = (environment = process.env.NODe_ENV) ->
   throw new Error 'Environment not found' unless environment? and config[environment]?
   return config[environment]
