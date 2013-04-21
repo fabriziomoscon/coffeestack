@@ -36,7 +36,7 @@ Start Server
 ------------
 
 ```bash
-npm run supervisor
+npm run supervisor | bunyan
 ```
 
 Browse localhost
@@ -71,7 +71,7 @@ run the test
 
 console1
 ```bash
-npm run testing
+npm run testing | bunyan
 ```
 
 console2 (JSON)

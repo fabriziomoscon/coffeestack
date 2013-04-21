@@ -1,3 +1,7 @@
+secret config
+
+- create a .dist config with dummy data and make the app read from a local file
+
 dependencies
 
 - remove unused dependencies 

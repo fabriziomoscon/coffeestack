@@ -126,5 +126,5 @@ config =
 
 
 module.exports = (environment = process.env.NODe_ENV) ->
-  throw new Error 'Environment not found' unless environment? and config[environment]?
+  throw new Error 'Environment not found' unless config[environment]?
   return config[environment]
