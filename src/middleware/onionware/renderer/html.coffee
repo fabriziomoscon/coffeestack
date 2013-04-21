@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = (req, res, peel) ->
 
   res.onion.use (req, res, peel) ->
@@ -5,7 +7,8 @@ module.exports = (req, res, peel) ->
     if res.format is 'text/html'
 
       if not res.view?
-        console.trace 'View File not found'
+
+        log.error 'View File not found'
         res.view = 'pages/error/error'
 
       res.setHeader 'Content-Type', 'text/html'

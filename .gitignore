@@ -5,3 +5,4 @@ client/lib/*.js
 public/lib/*.js
 client/style/*.css
 public/style/*.css
+coffeestack.*.log

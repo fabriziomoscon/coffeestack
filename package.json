@@ -33,7 +33,8 @@
     "mmm-vanillahogan": "0.2.x",
     "async": "0.2.x",
     "supervisor": "*",
-    "validator": "*"
+    "validator": "*",
+    "bunyan": "*"
   },
   "devDependencies": {
     "jake": "0.5.x",

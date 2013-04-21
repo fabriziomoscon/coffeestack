@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = (error) ->
 
   return (req, res, peel) ->
@@ -6,6 +8,6 @@ module.exports = (error) ->
     res.data.body.error = 'Not found: ' + (error.message || error)
     res.view = 'pages/error/notFound'
 
-    console.log 'ONION', res.data.body.error
+    log.info 'ONION', res.data.body.error
     
     peel()

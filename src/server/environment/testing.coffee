@@ -1,5 +1,7 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = ->
 
-  console.log 'Loading config: TESTING'
+  log.info 'Loading config: TESTING'
   
-  @set 'MongoLogger', require 'src/lib/mongo/logger'
+  @set 'MongoLogger', require('src/lib/mongo/logger')(log)

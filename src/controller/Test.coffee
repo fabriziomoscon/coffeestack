@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 MongoGateway = require 'src/lib/mongo/Gateway'
 
 http = require 'src/controller/helper/httpResponse'
@@ -62,7 +64,7 @@ loadUsers = (req, res, callback) ->
   as = new AccountService
   for key, userData of require('test/data/db/users').getData()
     as.createUser UserMapper.unmarshall(userData), (err, result) ->
-      console.log err if err?
+      log.error err if err?
       return callback err, null if err?
 
   return callback null, null

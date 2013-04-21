@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = (error) ->
 
   return (req, res, peel) ->
@@ -7,6 +9,6 @@ module.exports = (error) ->
       (error.message || 'You are not authorized to perform this operation')
     res.view = 'pages/error/error'
 
-    console.log 'ONION Forbidden', res.data.body.error
+    log.info 'ONION Forbidden', res.data.body.error
 
     peel()

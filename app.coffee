@@ -1,11 +1,12 @@
 process.env.NODE_ENV ?= 'development'
 
-express  = require 'express'
-path     = require 'path'
+express = require 'express'
+path    = require 'path'
+
+log = require 'src/middleware/logger/log'
 
 app = express()
-applicationPath = path.resolve __dirname
-app.set 'baseDir', applicationPath
+app.set 'baseDir', path.resolve __dirname
 
 app.configure require 'src/server/init'
 app.configure require 'src/server/routes'
@@ -21,4 +22,4 @@ if process.env.NODE_ENV is 'development'
     res.end err.stack
 
 server = app.listen app.get('port'), '0.0.0.0'
-console.log 'LISTENING ON PORT ' + app.get('port')
+log.info "LISTENING ON PORT #{app.get('port')}"

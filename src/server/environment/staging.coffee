@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = ->
 
-  console.log 'Loading config: STAGING'
+  log.info 'Loading config: STAGING'
