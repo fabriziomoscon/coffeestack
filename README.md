@@ -19,7 +19,7 @@ In `~/.bash_profile` or equivalent:
 
 ```bash
 export PATH=./node_modules/.bin:$PATH
-export NODE_PATH=./:$NODE_PATH
+export NODE_PATH=./:/usr/local/lib/node_modules
 ```
 
 From the command line:
