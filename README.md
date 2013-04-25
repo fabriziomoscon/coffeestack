@@ -53,6 +53,8 @@ Browse localhost
 Run Tests
 ---------
 
+[![Build Status](https://travis-ci.org/fabriziomoscon/coffeestack.png?branch=master)](https://travis-ci.org/fabriziomoscon/coffeestack)
+
 ```bash
 npm test
 ```
