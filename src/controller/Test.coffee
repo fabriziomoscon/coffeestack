@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 MongoGateway = require 'src/lib/mongo/Gateway'
 
 http = require 'src/controller/helper/httpResponse'
@@ -8,46 +10,44 @@ UserMapper = require 'src/mapper/User'
 
 class Controller
 
+  @index: (req, res) ->
+    return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
+    res.end '''USAGE:
+      curl -XPOST http://localhost:4000/testing/drop
+      curl -XPOST http://localhost:4000/testing/fixtures
+      curl -XPOST http://localhost:4000/testing/fixtures/users
+
+    '''
+
   @dropDatabase: (req, res) ->
 
     alwaysResponsInJSON req, res
 
     return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
 
-    MongoGateway.db.dropDatabase (err) ->
-      return res.onion.use( http.serverError err ).peel() if err?
-
-      res.format = 'application/json'
-      res.status 200
-      return res.onion.peel()
+    dropDatabase req, res
 
 
   @loadFixtures: (req, res) ->
 
-    alwaysResponsInJSON req, res
+    Controller.loadFixturesUsers req, res
 
-    return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV in ['testing', 'staging']
 
-    loadUsers req, res, (err) ->
-      return res.onion.use( http.serverError err ).peel() if err?
-        
-      res.format = 'application/json'
-      res.status 200
-      return res.onion.peel()
-
-  
   @loadFixturesUsers: (req, res) ->
 
     alwaysResponsInJSON req, res
 
     return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV in ['testing', 'staging']
 
-    loadUsers req, res, (err) ->
+    dropDatabase req, res, (err) ->
       return res.onion.use( http.serverError err ).peel() if err?
-      
-      res.format = 'application/json'
-      res.status 200
-      return res.onion.peel()
+
+      loadUsers req, res, (err) ->
+        return res.onion.use( http.serverError err ).peel() if err?
+
+        res.format = 'application/json'
+        res.status 200
+        return res.onion.peel()
 
 
 module.exports = Controller
@@ -62,9 +62,19 @@ alwaysResponsInJSON = (req, res) ->
 
 loadUsers = (req, res, callback) ->
   as = new AccountService
-  for key, userData of require('test/data/users').getData()
+  for key, userData of require('test/data/db/users').getData()
     as.createUser UserMapper.unmarshall(userData), (err, result) ->
-      console.log err if err?
+      log.error err if err?
       return callback err, null if err?
 
   return callback null, null
+
+dropDatabase = (req, res, next) ->
+  MongoGateway.db.dropDatabase (err) ->
+  return res.onion.use( http.serverError err ).peel() if err?
+
+  return next null if next instanceof Function
+
+  res.format = 'application/json'
+  res.status 200
+  return res.onion.peel()

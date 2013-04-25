@@ -1,14 +1,15 @@
-express          = require 'express'
-MongoStore       = require('connect-mongo') express
-mmm              = require 'mmm-vanillahogan'
-stylus           = require 'stylus'
-MongoGateway     = require 'src/lib/mongo/Gateway'
+express      = require 'express'
+MongoStore   = require('connect-mongo') express
+mmm          = require 'mmm-vanillahogan'
+stylus       = require 'stylus'
+MongoGateway = require 'src/lib/mongo/Gateway'
+log          = require 'src/middleware/logger/log'
 
 getConfig = require 'src/server/config'
 
 module.exports = ->
 
-  console.log 'Loading config: DEFAULT'
+  log.info 'Loading config: DEFAULT'
 
   baseDir = @get 'baseDir'
 
@@ -72,7 +73,7 @@ module.exports = ->
     @locals.GA = config.client.google.analytics
 
   # configure database
-  console.log 'Connecting to database: ' + @get 'dsn'
+  log.info 'Connecting to database: ' + @get 'dsn'
   MongoGateway.setLogger @get('MongoLogger')
   MongoGateway.init config.db
   MongoGateway.connect config.db.user, config.db.password

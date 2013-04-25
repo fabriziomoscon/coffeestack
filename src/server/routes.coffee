@@ -1,3 +1,5 @@
+log = require 'src/middleware/logger/log'
+
 controllers =
   index:    require 'src/controller/Index'
   user:     require 'src/controller/User'
@@ -9,7 +11,7 @@ dispatch = (controllerName, actionName) ->
     if actionName and typeof action[actionName] is 'function'
       action = action[actionName]
       try res.onion.use require "view/twostep/#{controllerName}/#{actionName}"
-      catch e then console.error "twostep view not defined for #{controllerName}/#{actionName}", e
+      catch e then log.error "view/twostep not defined for #{controllerName}/#{actionName}"
     action req, res, next
 
 sessionIdReplaceRedirect = (action) ->
@@ -27,7 +29,7 @@ sessionIdReplaceRedirect = (action) ->
 module.exports = ->
 
   # ---- Home ----
-  @get '/',                 dispatch 'index'
+  @get '/',                 dispatch 'index', 'index'
 
   # ---- User ----
   @get  '/user/me',  sessionIdReplaceRedirect dispatch 'user', 'single'
@@ -41,6 +43,7 @@ module.exports = ->
   if process.env.NODE_ENV in ['testing', 'staging']
 
     TestController = require 'src/controller/Test'
-    @post '/testing/drop', TestController.dropDatabase
-    @post '/testing/fixtures', TestController.loadFixtures
+    @post '/testing',                TestController.index
+    @post '/testing/drop',           TestController.dropDatabase
+    @post '/testing/fixtures',       TestController.loadFixtures
     @post '/testing/fixtures/users', TestController.loadFixturesUsers

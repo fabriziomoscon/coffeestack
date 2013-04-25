@@ -18,7 +18,7 @@ Setup
 In `~/.bash_profile` or equivalent:
 
 ```bash
-export PATH=./node_modules/.bin:$PATH
+export PATH=$PATH:./node_modules/.bin
 export NODE_PATH=./:/usr/local/lib/node_modules
 ```
 
@@ -36,7 +36,7 @@ Start Server
 ------------
 
 ```bash
-npm start
+npm run supervisor | bunyan
 ```
 
 Browse localhost
@@ -60,11 +60,18 @@ install ciao globally
 sudo npm install ciao -g
 ```
 
+load fixtures
+```bash
+curl -XPOST http://localhost:4000/testing/drop
+curl -XPOST http://localhost:4000/testing/fixtures
+curl -XPOST http://localhost:4000/testing/fixtures/users
+```
+
 run the test
 
 console1
 ```bash
-npm run testing
+npm run testing | bunyan
 ```
 
 console2 (JSON)
@@ -112,7 +119,7 @@ and executing it
 smog &
 ```
 
-once smog is running open a browser to [http://localhost:8080/](http://localhost:8080/) and change `test` to `bizzby` inside the DSN popup
+once smog is running open a browser to [http://localhost:8080/](http://localhost:8080/) and change `test` to `coffeestackDB` inside the DSN popup
 
 NOTE
 

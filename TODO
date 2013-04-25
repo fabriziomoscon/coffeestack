@@ -1,11 +1,20 @@
+secret config
+
+- create a .dist config with dummy data and make the app read from a local file
+
+dependencies
+
+- remove unused dependencies 
+
 bootstrapping
 
-- create script that checks for NODE_PATH and stop execution when not found
+- create startup script that checks for NODE_PATH and stop execution when not found
 
 ciao
 
 - add ciao API example
 - add ciao HTML example
+
 - add ciao doc example
 
 architecture

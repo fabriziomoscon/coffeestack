@@ -1,6 +1,8 @@
+log = require 'src/middleware/logger/log'
+
 module.exports = ->
 
-  console.log 'Loading config: DEVELOPMENT'
+  log.info 'Loading config: DEVELOPMENT'
 
   # HTML not ugly
   @locals.pretty = true
@@ -15,4 +17,4 @@ module.exports = ->
       delete req.query._method
     next()
 
-  @set 'MongoLogger', require 'src/lib/mongo/logger'
+  @set 'MongoLogger', require('src/lib/mongo/logger')(log)

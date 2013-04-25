@@ -25,6 +25,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -54,6 +56,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -83,6 +87,8 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
@@ -112,10 +118,13 @@ config =
           secret: ''
           redirectUri: ''
     client:
+      seo:
+        title: 'CoffeeStack'
       google:
         maps:
           key: ''
 
-module.exports = (environment) ->
-  throw new Error 'Environment not found' unless environment? and config[environment]?
+
+module.exports = (environment = process.env.NODe_ENV) ->
+  throw new Error 'Environment not found' unless config[environment]?
   return config[environment]
