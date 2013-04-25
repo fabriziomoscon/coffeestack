@@ -1,8 +1,9 @@
 node_modules
 npm-debug.log
 client/src/templates.coffee
-client/lib/*.js
-public/lib/*.js
+client/lib/*
+client/lib/mapper/*.js
+public/lib/*
 client/style/*.css
 public/style/*.css
 coffeestack.*.log
