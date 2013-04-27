@@ -3,7 +3,7 @@ process.env.NODE_ENV ?= 'development'
 express = require 'express'
 path    = require 'path'
 
-log = require 'src/middleware/logger/log'
+global.log = require 'src/middleware/logger/log'
 
 app = express()
 app.set 'baseDir', path.resolve __dirname

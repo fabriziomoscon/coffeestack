@@ -1,5 +1,3 @@
-log = require 'src/middleware/logger/log'
-
 UserMapper       = require 'src/mapper/api/User'
 ClientUserMapper = require 'client/src/mapper/User'
 

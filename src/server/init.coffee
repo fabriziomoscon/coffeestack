@@ -3,7 +3,6 @@ MongoStore   = require('connect-mongo') express
 mmm          = require 'mmm-vanillahogan'
 stylus       = require 'stylus'
 MongoGateway = require 'src/lib/mongo/Gateway'
-log          = require 'src/middleware/logger/log'
 
 getConfig = require 'src/server/config'
 

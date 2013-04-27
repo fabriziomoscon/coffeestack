@@ -1,5 +1,3 @@
-log = require 'src/middleware/logger/log'
-
 MongoGateway = require 'src/lib/mongo/Gateway'
 
 http = require 'src/controller/helper/httpResponse'

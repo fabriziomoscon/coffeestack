@@ -1,5 +1,3 @@
-log = require 'src/middleware/logger/log'
-
 module.exports = (req, res, peel) ->
 
   res.onion.use (req, res, peel) ->

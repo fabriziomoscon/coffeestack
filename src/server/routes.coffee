@@ -1,5 +1,3 @@
-log = require 'src/middleware/logger/log'
-
 controllers =
   index:    require 'src/controller/Index'
   user:     require 'src/controller/User'

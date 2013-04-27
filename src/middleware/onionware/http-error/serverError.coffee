@@ -1,5 +1,3 @@
-log = require 'src/middleware/logger/log'
-
 module.exports = (error) ->
 
   return (req, res, peel) ->
