@@ -40,7 +40,44 @@
 
         <h1>CoffeeStack</h1>
 
-<p>Predefined node.js express web stack written in CoffeeScript providing common CRUD actions for account management as an example user case. This layered architecture is an extended MVC which uses data mapper, repository pattern and two step view to achieve a neat separation of concerns between the layers. The application code integrates a basic template for unit, functional, integration tests and HTML rendering template using stylus and mustache. It also provide JSON endpoints which can be called using standard HTTP headers for <code>Accept</code> as shown in JSON web service functional test <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/test/functional/json/user/create/success.coffee">example</a>. </p>
+<p>Node.js framework for web sites and web services based on a Domain model. </p>
+
+<h2>Why using Coffeestack</h2>
+
+<ul>
+<li>Rapid Application Development for model based webservices in top of web sites (Single backend code to make API and web site)</li>
+<li>Achieve separation of concerns and code responsibilities with layered architecture (stop dumping code into the controller!)</li>
+<li>Using <code>MongoDB</code> as main data/session store and plugin other sources if you need to (file storage, NoSQL and Relational can live together)</li>
+<li>Create unit and functional testable applications (make testing your app fun)</li>
+<li>Validate inputs against the Domain Model (stop copy and paste rules into external validators or controllers, creating ONLY valid objects to pass down to the stack)</li>
+</ul><h2>What is part of CoffeeStack</h2>
+
+<ul>
+<li>environment based configuration <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/server/config.coffee">file</a> -&gt; development, staging, testing, production</li>
+<li>controllers -&gt; <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/controller/User.coffee">basic authentication check and input validation</a> </li>
+<li>models -&gt; <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/model/User.coffee">define the domain of the application</a>
+</li>
+<li>
+<a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/mapper/User.coffee">db mappers</a> -&gt; map DB data &lt;-&gt; model data</li>
+<li>
+<a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/mapper/api/User.coffee">web service mappers</a> -&gt; map model DATA &lt;-&gt; request specific DATA</li>
+<li>decorators -&gt; add custom format to data before they render on HTML</li>
+<li>
+<a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/repository/User.coffee">repositories</a> -&gt; abstract calls to storages and map data usign db mappers</li>
+<li>
+<a href="https://github.com/fabriziomoscon/coffeestack/blob/master/src/source/mongo/User.coffee">sources</a> -&gt; technology specific API and data access </li>
+<li>
+<a href="https://github.com/fabriziomoscon/coffeestack/blob/master/view/twostep/user/create.coffee">two step view</a> -&gt; use HTTP/1.1 <code>Accept</code> to switch response output </li>
+<li>views -&gt; <code>mustache</code> and template engine </li>
+<li>
+<code>express</code> -&gt; provide middleware layer to route and dispatch requests</li>
+<li>unit test suite using <code>mocha</code> and <code>should</code>
+</li>
+<li>functional test suite using <a href="https://github.com/fabriziomoscon/coffeestack/blob/master/test/functional/json/user/create/success.coffee">ciao</a>
+</li>
+</ul><h2>Updates status using David-dm</h2>
+
+<p><a href="https://david-dm.org/fabriziomoscon/coffeestack"><img src="https://david-dm.org/fabriziomoscon/coffeestack.png" alt="Dependency Status"></a></p>
 
 <h2>Ready to go</h2>
 
@@ -54,7 +91,7 @@
 <p>In <code>~/.bash_profile</code> or equivalent:</p>
 
 <div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:./node_modules/.bin
-<span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span>./:<span class="nv">$NODE_PATH</span>
+<span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span>/usr/local/lib/node_modules:./
 </pre></div>
 
 <p>From the command line:</p>
@@ -67,7 +104,7 @@
 
 <h2>Start Server</h2>
 
-<div class="highlight"><pre>npm run supervisor
+<div class="highlight"><pre>npm run supervisor | bunyan
 </pre></div>
 
 <h2>Browse localhost</h2>
@@ -75,6 +112,8 @@
 <p><a href="http://localhost:3000/">http://localhost:3000/</a></p>
 
 <h2>Run Tests</h2>
+
+<p><a href="https://travis-ci.org/fabriziomoscon/coffeestack"><img src="https://travis-ci.org/fabriziomoscon/coffeestack.png?branch=master" alt="Build Status"></a></p>
 
 <div class="highlight"><pre>npm <span class="nb">test</span>
 </pre></div>
@@ -86,11 +125,18 @@
 <div class="highlight"><pre>sudo npm install ciao -g
 </pre></div>
 
+<p>load fixtures</p>
+
+<div class="highlight"><pre>curl -XPOST http://localhost:4000/testing/drop
+curl -XPOST http://localhost:4000/testing/fixtures
+curl -XPOST http://localhost:4000/testing/fixtures/users
+</pre></div>
+
 <p>run the test</p>
 
 <p>console1</p>
 
-<div class="highlight"><pre>npm run testing
+<div class="highlight"><pre>npm run testing | bunyan
 </pre></div>
 
 <p>console2 (JSON)</p>
@@ -134,7 +180,7 @@ sudo setcap <span class="nv">cap_net_bind_service</span><span class="o">=</span>
 <div class="highlight"><pre>smog &amp;
 </pre></div>
 
-<p>once smog is running open a browser to <a href="http://localhost:8080/">http://localhost:8080/</a> and change <code>test</code> to <code>bizzby</code> inside the DSN popup</p>
+<p>once smog is running open a browser to <a href="http://localhost:8080/">http://localhost:8080/</a> and change <code>test</code> to <code>coffeestackDB</code> inside the DSN popup</p>
 
 <p>NOTE</p>
 
