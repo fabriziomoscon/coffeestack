@@ -6,7 +6,7 @@ Predefined node.js express web stack written in CoffeeScript providing common CR
 Updates status using David-dm
 -----------------------------
 
-<img src="https://david-dm.org/fabriziomoscon/coffeestack.png"/>
+<img src="https://david-dm.org/fabriziomoscon/coffeestack.png"/>(https://david-dm.org/fabriziomoscon/coffeestack)
 
 Ready to go
 -----------
@@ -23,7 +23,7 @@ Setup
 In `~/.bash_profile` or equivalent:
 
 ```bash
-export PATH=$PATH./node_modules/.bin
+export PATH=$PATH:./node_modules/.bin
 export NODE_PATH=/usr/local/lib/node_modules:./
 ```
 

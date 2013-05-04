@@ -39,9 +39,7 @@ db
 
 test
 
-- add travis test badge
 - add mocks
-- add a unit example
 - add an integration example
 
 package
