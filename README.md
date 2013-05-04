@@ -10,6 +10,7 @@ Why using Coffeestack
 * Using `MongoDB` as main data/session store and plugin other sources if you need to (file storage, NoSQL and Relational can live together)
 * Create unit and functional testable applications (make testing your app fun)
 * Validate inputs against the Domain Model (stop copy and paste rules into external validators or controllers, creating ONLY valid objects to pass down to the stack)
+* Log errors, info and debug separately using `bunyan`
 
 What is part of CoffeeStack
 ---------------------------
