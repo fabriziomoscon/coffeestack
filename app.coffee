@@ -1,12 +1,14 @@
 process.env.NODE_ENV ?= 'development'
 
-express = require 'express'
-path    = require 'path'
-
 global.log = require 'src/middleware/logger/log'
 
+express = require 'express'
+http = require 'http'
+# https = require 'https'
+
 app = express()
-app.set 'baseDir', path.resolve __dirname
+server = http.createServer app
+app.set 'baseDir', require('path').resolve __dirname
 
 app.configure require 'src/server/init'
 app.configure require 'src/server/routes'
@@ -21,5 +23,5 @@ if process.env.NODE_ENV is 'development'
     res.writeHead 500, 'Content-Type': 'text/plain'
     res.end err.stack
 
-server = app.listen app.get('port'), '0.0.0.0'
+server.listen app.get('port'), '0.0.0.0'
 log.info "LISTENING ON PORT #{app.get('port')}"
