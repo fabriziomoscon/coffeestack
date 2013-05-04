@@ -53,7 +53,7 @@
 
 <p>In <code>~/.bash_profile</code> or equivalent:</p>
 
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>./node_modules/.bin:<span class="nv">$PATH</span>
+<div class="highlight"><pre><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:./node_modules/.bin
 <span class="nb">export </span><span class="nv">NODE_PATH</span><span class="o">=</span>./:<span class="nv">$NODE_PATH</span>
 </pre></div>
 
@@ -67,7 +67,7 @@
 
 <h2>Start Server</h2>
 
-<div class="highlight"><pre>npm start
+<div class="highlight"><pre>npm run supervisor
 </pre></div>
 
 <h2>Browse localhost</h2>
