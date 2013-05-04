@@ -6,7 +6,7 @@ Predefined node.js express web stack written in CoffeeScript providing common CR
 Updates status using David-dm
 -----------------------------
 
-[(https://david-dm.org/fabriziomoscon/coffeestack.png)](https://david-dm.org/fabriziomoscon/coffeestack)
+[![Dependency Status](https://david-dm.org/fabriziomoscon/coffeestack.png)](https://david-dm.org/fabriziomoscon/coffeestack.png)
 
 Ready to go
 -----------
