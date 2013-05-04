@@ -4,13 +4,15 @@ CoffeeStack
 Node.js framework for web sites and web services based on a Domain model. 
 
 Why using Coffeestack
+---------------------
 * Rapid Application Development for model based webservices in top of web sites (Single backend code to make API and web site)
-* Setup layered architecture and achieve separation of concerns and code responsibilities (stop dumping code into the controller!)
-* Using `MongoDB` as main data/session store with the possibility to plugin other sources (file storage, NoSQL and Relational can live together)
-* Setup a unit and functional testable application (make testing your app fun)
+* Achieve separation of concerns and code responsibilities with layered architecture (stop dumping code into the controller!)
+* Using `MongoDB` as main data/session store and plugin other sources if you need to (file storage, NoSQL and Relational can live together)
+* Create unit and functional testable applications (make testing your app fun)
 * Validate inputs against the Domain Model (stop copy and paste rules into external validators or controllers, creating ONLY valid objects to pass down to the stack)
 
 What is part of CoffeeStack
+---------------------------
 * environment based configuration [file](https://github.com/fabriziomoscon/coffeestack/blob/master/src/server/config.coffee) -> development, staging, testing, production
 * controllers -> [basic authentication check and input validation](https://github.com/fabriziomoscon/coffeestack/blob/master/src/controller/User.coffee) 
 * models -> [define the domain of the application](https://github.com/fabriziomoscon/coffeestack/blob/master/src/model/User.coffee)
