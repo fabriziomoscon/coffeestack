@@ -1,6 +1,7 @@
 check = require 'check-types'
 
-class Date
+class DateMapper
+
 
   @marshall: (date) ->
 
@@ -11,9 +12,9 @@ class Date
 
   @unmarshall: (timestamp) ->
 
-    throw new Error 'Invalid timestamp' unless check.isPositiveNumber timestamp
+    throw new Error 'Invalid timestamp' unless check.isNumber timestamp
 
     return new Date timestamp
 
 
-module.exports = Date
+module.exports = DateMapper
