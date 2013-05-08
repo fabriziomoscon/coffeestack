@@ -1,12 +1,38 @@
 CoffeeStack
 ===========
 
-Predefined node.js express web stack written in CoffeeScript providing common CRUD actions for account management as an example user case. This layered architecture is an extended MVC which uses data mapper, repository pattern and two step view to achieve a neat separation of concerns between the layers. The application code integrates a basic template for unit, functional, integration tests and HTML rendering template using stylus and mustache. It also provide JSON endpoints which can be called using standard HTTP headers for `Accept` as shown in JSON web service functional test [example](https://github.com/fabriziomoscon/coffeestack/blob/master/test/functional/json/user/create/success.coffee). 
+Node.js framework for web sites and web services based on a Domain model. 
+
+Why using Coffeestack
+---------------------
+* Rapid Application Development for model based webservices in top of web sites (Single backend code to make API and web site)
+* Achieve separation of concerns and code responsibilities with layered architecture (stop dumping code into the controller!)
+* Using `MongoDB` as main data/session store and plugin other sources if you need to (file storage, NoSQL and Relational can live together)
+* Create unit and functional testable applications (make testing your app fun)
+* Validate inputs against the Domain Model (stop copy and paste rules into external validators or controllers, creating ONLY valid objects to pass down to the stack)
+* Log errors, info and debug separately using `bunyan`
+
+What is part of CoffeeStack
+---------------------------
+* environment based configuration [file](https://github.com/fabriziomoscon/coffeestack/blob/master/src/server/config.coffee) -> development, staging, testing, production
+* controllers -> [basic authentication check and input validation](https://github.com/fabriziomoscon/coffeestack/blob/master/src/controller/User.coffee) 
+* models -> [define the domain of the application](https://github.com/fabriziomoscon/coffeestack/blob/master/src/model/User.coffee)
+* [db mappers](https://github.com/fabriziomoscon/coffeestack/blob/master/src/mapper/User.coffee) -> map DB data <-> model data
+* [web service mappers](https://github.com/fabriziomoscon/coffeestack/blob/master/src/mapper/api/User.coffee) -> map model DATA <-> request specific DATA
+* decorators -> add custom format to data before they render on HTML
+* [repositories](https://github.com/fabriziomoscon/coffeestack/blob/master/src/repository/User.coffee) -> abstract calls to storages and map data usign db mappers
+* [sources](https://github.com/fabriziomoscon/coffeestack/blob/master/src/source/mongo/User.coffee) -> technology specific API and data access 
+* [two step view](https://github.com/fabriziomoscon/coffeestack/blob/master/view/twostep/user/create.coffee) -> use HTTP/1.1 `Accept` to switch response output 
+* views -> `mustache` and template engine 
+* `express` -> provide middleware layer to route and dispatch requests
+* unit test suite using `mocha` and `should`
+* functional test suite using [ciao](https://github.com/fabriziomoscon/coffeestack/blob/master/test/functional/json/user/create/success.coffee)
+
 
 Updates status using David-dm
 -----------------------------
 
-<img src="https://david-dm.org/fabriziomoscon/coffeestack.png"/>
+[![Dependency Status](https://david-dm.org/fabriziomoscon/coffeestack.png)](https://david-dm.org/fabriziomoscon/coffeestack)
 
 Ready to go
 -----------
@@ -23,7 +49,7 @@ Setup
 In `~/.bash_profile` or equivalent:
 
 ```bash
-export PATH=$PATH./node_modules/.bin
+export PATH=$PATH:./node_modules/.bin
 export NODE_PATH=/usr/local/lib/node_modules:./
 ```
 
