@@ -6,6 +6,7 @@
   "description": "add the description of your project",
   "contributors": [],
   "scripts": {
+    "predeploy": "./node_modules/.bin/jake siteminify",
     "prestart": "./node_modules/.bin/jake siteminify",
     "start": "export NODE_PATH=$NODE_PATH:./ && coffee app.coffee",
     "supervisor": "export NODE_PATH=$NODE_PATH:./ && supervisor app.coffee",
