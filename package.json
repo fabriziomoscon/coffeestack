@@ -28,7 +28,8 @@
     "connect-mongo": "*",
     "check-types": "0.6.x",
     "mmm-vanillahogan": "0.2.x",
-    "validator": "*"
+    "validator": "*",
+    "bunyan": "*"
   },
   "devDependencies": {
     "jake": "0.5.x",
