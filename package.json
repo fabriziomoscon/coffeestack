@@ -29,6 +29,7 @@
     "connect-mongo": "*",
     "check-types": "0.6.x",
     "mmm-vanillahogan": "0.2.x",
+    "hogan.js": "2.0.x",
     "validator": "*",
     "bunyan": "*"
   },
