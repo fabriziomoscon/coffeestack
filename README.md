@@ -43,6 +43,16 @@ Download the code to create an initial web application setup and extend it as yo
 git clone git@github.com:fabriziomoscon/coffeestack.git
 ```
 
+Requirements
+------------
+
+```bash
+sudo npm install -g ciao
+sudo npm install -g mocha
+sudo npm install -g coffee-script
+sudo npm install -g bunyan
+```
+
 Setup
 -----
 
