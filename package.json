@@ -1,18 +1,22 @@
 {
   "name": "coffeestack",
-  "preferGlobal": true,
+  "preferGlobal": false,
   "private": true,
   "version": "0.0.1",
-  "description": "add the description of your project",
+  "description": "just another CoffeeStack project",
   "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabriziomoscon/coffeestack"
+  },
   "scripts": {
     "predeploy": "./node_modules/.bin/jake siteminify",
     "prestart": "./node_modules/.bin/jake siteminify",
     "start": "export NODE_PATH=$NODE_PATH:./ && coffee app.coffee",
-    "supervisor": "export NODE_PATH=$NODE_PATH:./ && supervisor app.coffee",
-    "testing": "export NODE_ENV=testing && export NODE_PATH=$NODE_PATH:./ && supervisor -i ciao app.coffee",
-    "front-test": "./node_modules/.bin/jake jstest",
-    "back-test": "export NODE_PATH=$NODE_PATH:./ && export TZ='Europe/London' && mocha test/unit",
+    "supervisor": "TZ='UTC' NODE_PATH=$NODE_PATH:./ supervisor app.coffee",
+    "testing": "TZ='UTC' NODE_ENV=testing NODE_PATH=$NODE_PATH:./ supervisor -i ciao app.coffee",
+    "front-test": "TZ='UTC' NODE_ENV=testing ./node_modules/.bin/jake jstest",
+    "back-test": "TZ='UTC' NODE_ENV=testing NODE_PATH=$NODE_PATH:./ mocha test/unit",
     "test": "npm run back-test && coffee test/lint.coffee && npm run front-test"
   },
   "dependencies": {
@@ -27,7 +31,7 @@
     "connect-mongo": "*",
     "numeral": "1.4.x",
     "node-markdown": "~0.1.1",
-    "browserify": "2.13.x",
+    "browserify": "2.14.x",
     "check-types": "0.6.x",
     "request": "2.21.x",
     "q": "0.9.x",
@@ -40,7 +44,7 @@
   "devDependencies": {
     "jake": "0.5.x",
     "coffeelint": "0.5.x",
-    "mocha": "1.9.x",
+    "mocha": "1.10.x",
     "assert": "0.4.x",
     "should": "1.2.x",
     "chai": "1.5.x",
