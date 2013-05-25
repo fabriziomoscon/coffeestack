@@ -2,9 +2,13 @@ secret config
 
 - create a .dist config with dummy data and make the app read from a local file
 
-dependencies
+sessions
 
-- remove unused dependencies 
+- use redis for sessions
+
+facebook connect
+
+- add example of passport to connect 
 
 bootstrapping
 
