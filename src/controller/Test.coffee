@@ -6,49 +6,49 @@ AccountService = require 'src/service/Account'
 
 UserMapper = require 'src/mapper/User'
 
-class Controller
 
-  @index: (req, res) ->
-    return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
-    res.end '''USAGE:
-      curl -XPOST http://localhost:4000/testing/drop
-      curl -XPOST http://localhost:4000/testing/fixtures
-      curl -XPOST http://localhost:4000/testing/fixtures/users
+index = (req, res) ->
 
-    '''
+  return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
 
-  @dropDatabase: (req, res) ->
+  res.end '''USAGE:
+    curl -XPOST http://localhost:4000/testing/drop
+    curl -XPOST http://localhost:4000/testing/fixtures
+    curl -XPOST http://localhost:4000/testing/fixtures/users
 
-    alwaysResponsInJSON req, res
+  '''
 
-    return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
+dropDatabase = (req, res) ->
 
-    dropDatabase req, res
+  alwaysResponsInJSON req, res
 
+  return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV is 'testing'
 
-  @loadFixtures: (req, res) ->
-
-    Controller.loadFixturesUsers req, res
+  dropDatabase req, res
 
 
-  @loadFixturesUsers: (req, res) ->
+loadFixtures = (req, res) ->
 
-    alwaysResponsInJSON req, res
+  Controller.loadFixturesUsers req, res
 
-    return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV in ['testing', 'staging']
 
-    dropDatabase req, res, (err) ->
+loadFixturesUsers = (req, res) ->
+
+  alwaysResponsInJSON req, res
+
+  return res.onion.use( http.badRequest 'Invalid ENV' ).peel() unless process.env.NODE_ENV in ['testing', 'staging']
+
+  dropDatabase req, res, (err) ->
+    return res.onion.use( http.serverError err ).peel() if err?
+
+    loadUsers req, res, (err) ->
       return res.onion.use( http.serverError err ).peel() if err?
 
-      loadUsers req, res, (err) ->
-        return res.onion.use( http.serverError err ).peel() if err?
-
-        res.format = 'application/json'
-        res.status 200
-        return res.onion.peel()
+      res.format = 'application/json'
+      res.status 200
+      return res.onion.peel()
 
 
-module.exports = Controller
 
 # local functions
 
@@ -76,3 +76,6 @@ dropDatabase = (req, res, next) ->
   res.format = 'application/json'
   res.status 200
   return res.onion.peel()
+
+
+module.exports = { index, loadFixtures, loadFixturesUsers, dropDatabase}

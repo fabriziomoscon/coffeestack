@@ -1,20 +1,18 @@
 check = require 'check-types'
 
-class DateMapper
+
+marshall = (date) ->
+
+  throw new Error 'Invalid date' unless date instanceof Date
+  
+  return date.getTime()
 
 
-  @marshall: (date) ->
+unmarshall = (timestamp) ->
 
-    throw new Error 'Invalid date' unless date instanceof Date
-    
-    return date.getTime()
+  throw new Error 'Invalid timestamp' unless check.isNumber timestamp
 
-
-  @unmarshall: (timestamp) ->
-
-    throw new Error 'Invalid timestamp' unless check.isNumber timestamp
-
-    return new Date timestamp
+  return new Date timestamp
 
 
-module.exports = DateMapper
+module.exports = {marshall, unmarshall}

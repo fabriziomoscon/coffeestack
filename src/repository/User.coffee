@@ -2,11 +2,15 @@ UserSource = require 'src/source/mongo/User'
 
 UserMapper = require 'src/mapper/User'
 
+check = require 'check-types'
+
 class UserRespository
 
+
   constructor: (userSource = UserSource, userMapper = UserMapper) ->
-    throw new Error 'Invalid source' unless userSource instanceof Function
-    throw new Error 'Invalid mapper' unless userMapper instanceof Function
+    throw new Error 'Invalid user source' unless check.quacksLike userSource, UserSource
+    throw new Error 'Invalid mapper' unless check.quacksLike userMapper, UserMapper
+
     @userSource = userSource
     @userMapper = userMapper
 
