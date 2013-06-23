@@ -20,5 +20,7 @@ should.not.exist = function() {
   };
 }
 
+require('rootpath')()
+
 global.should = should
-global.log = require('../src/middleware/logger/log');
+global.log = require('src/middleware/logger/log');

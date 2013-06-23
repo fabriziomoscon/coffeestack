@@ -3,8 +3,13 @@
   "preferGlobal": false,
   "private": true,
   "version": "0.0.1",
-  "description": "just another CoffeeStack project",
-  "contributors": [],
+  "description": "extensible web/API tested framework for node.js in CoffeeScript",
+  "contributors": [
+    {
+      "name": "Fabrizio Moscon",
+      "email": "mosconfabrizio@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fabriziomoscon/coffeestack"
@@ -12,11 +17,11 @@
   "scripts": {
     "predeploy": "./node_modules/.bin/jake siteminify",
     "prestart": "./node_modules/.bin/jake siteminify",
-    "start": "export NODE_PATH=$NODE_PATH:./ && coffee app.coffee",
-    "supervisor": "TZ='UTC' NODE_PATH=$NODE_PATH:./ supervisor app.coffee",
-    "testing": "TZ='UTC' NODE_ENV=testing NODE_PATH=$NODE_PATH:./ supervisor -i ciao app.coffee",
+    "start": "coffee app.coffee",
+    "supervisor": "TZ='UTC' supervisor app.coffee",
+    "testing": "TZ='UTC' NODE_ENV=testing supervisor -i ciao app.coffee",
     "front-test": "TZ='UTC' NODE_ENV=testing ./node_modules/.bin/jake jstest",
-    "back-test": "TZ='UTC' NODE_ENV=testing NODE_PATH=$NODE_PATH:./ mocha test/unit",
+    "back-test": "TZ='UTC' NODE_ENV=testing mocha test/unit",
     "test": "npm run back-test && coffee test/lint.coffee && npm run front-test"
   },
   "dependencies": {
@@ -31,7 +36,9 @@
     "mmm-vanillahogan": "0.2.x",
     "hogan.js": "2.0.x",
     "validator": "*",
-    "bunyan": "*"
+    "bunyan": "*",
+    "rootpath": "0.1.x",
+    "browserify": "2.20.x"
   },
   "devDependencies": {
     "jake": "0.5.x",

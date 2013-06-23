@@ -56,13 +56,6 @@ sudo npm install -g bunyan
 Setup
 -----
 
-In `~/.bash_profile` or equivalent:
-
-```bash
-export PATH=$PATH:./node_modules/.bin
-export NODE_PATH=/usr/local/lib/node_modules:./
-```
-
 From the command line:
 
 ```bash

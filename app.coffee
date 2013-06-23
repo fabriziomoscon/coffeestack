@@ -1,3 +1,5 @@
+require('rootpath')()
+
 process.env.NODE_ENV ?= 'development'
 
 global.log = require 'src/middleware/logger/log'
