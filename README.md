@@ -4,6 +4,7 @@ NOTICE
 This project need a real re-thought. Currently it does too many things and needs to be splitted in many parts.
 I firmly believe that a proper JSON API server in order to be maintainable and easy to use needs to leave all the part of HTML generation outside its core. Trying to deal with content negotiation at the API level brings lots of extra complexity to your code and break the single responsability principle in many ways, which was one of the fundamental reasons why I started writing CoffeeStack in first place.
 
+
 CoffeeStack
 ===========
 
